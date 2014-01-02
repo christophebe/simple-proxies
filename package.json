@@ -1,0 +1,21 @@
+{
+  "name": "simple-proxies",
+  "version": "0.1.0",
+  "author": "Christophe Lombart <christophe.lombart@gmail.com>",
+  "description": "a simple management for proxies that provide API to load a proxy list and to get one proxy from the list. ",
+  "main": "./proxy.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophebe/simple-proxies"
+  },
+  "keywords": [
+    "proxies",
+    "proxy management", 
+    "http", 
+    "proxy http"
+  ],  
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
