@@ -6,11 +6,7 @@
   "main": "./proxy.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christophebe/simple-proxies"
-  },
-  "dependencies": {
-       "request": "*", 
-       "ping": "*"
+    "url": "https://github.com/christophebe/simple-proxies.git
     },
   "keywords": [
     "proxies",
