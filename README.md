@@ -2,9 +2,23 @@
 
 ## Need a proxy list management in your js code ? 
 
-This simple tool loads a list of proxies from a file & get a simple API to use those proxies in your code. 
-For example, when you make some HTTP requests (specially in the SEO world), you need to make it through a proxy. 
+This simple tool loads a list of proxies from a file & get a simple API to use them in your JS code. 
+For example, when you make many HTTP requests (specially in the SEO world), you need to make them through a group of proxies. 
 
+By using this module, you can load your proxies, check if they are alive and get one from the list. 
+
+
+##How to install
+```javascript
+$ npm install simple-proxies
+```
+or add in you package.json :
+ 
+```javascript
+"dependencies": {
+       "simple-proxies": "*"
+    }
+```
 
 ## An exemple with Request 
 
@@ -18,6 +32,7 @@ request.get({
 		proxy : proxies.getUrl()
 });
 
+By default, the list of proxies are in the file called proxies.txt that should be in the root folder of your project. 
 
 ```
 
@@ -28,14 +43,17 @@ request.get({
 	proxies.loadProxyFile("./proxies.txt");
  ``` 
  
- The structure of the proxy file should be : [host:port:username:password] or [host:port]
+ The structure of each line in the proxy file should be : [host:port:username:password] or [host:port]
+ This method is automatically called if the file proxies.txt exists in the root folder of your project. 
 
 ### Check proxies 
 ```javascript
 	proxies.checkProxies(true); 
  ``` 
- 
+Check each proxy in the list : ping & execute one request on google.com.  
 If the argument of the method is true, invalid proxies will be removed from the list. 
+
+This method is automatically called if the file proxies.txt exists in the root folder of your project. 
 
 ### Get all Proxies
 ```javascript

@@ -2,8 +2,8 @@
   "name": "simple-proxies",
   "version": "0.1.1",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
-  "description": "a simple management for proxies that provides API to load a proxy list and to get one proxy from the list. By using this module, you can also check if the proxies are alive",
-  "main": "./proxy.js",
+  "description": "a simple management tool for proxies that provides an API to load a proxy list and manage them into your js code (get all proxies, check if they are alive, get an available proxy, ...).",
+  "main": "./lib/proxy.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophebe/simple-proxies.git"
