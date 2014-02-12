@@ -8,6 +8,11 @@
     "type": "git",
     "url": "https://github.com/christophebe/simple-proxies.git"
     },
+  "dependencies": {
+	"ping" : "*", 
+	"request" : "*"
+
+  },  
   "keywords": [
     "proxies",
     "proxy management", 
