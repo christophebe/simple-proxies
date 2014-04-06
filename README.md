@@ -2,16 +2,16 @@
 
 ## Need a proxy list management in your js code ? 
 
-This simple tool loads a list of proxies from a file & get a simple API to use them in your JS code. 
+This tool loads a list of proxies from a file & get a simple API to use them in your JS code. 
 For example, when you make many HTTP requests (specially in the SEO world), you need to make them through a group of proxies. 
 
 By using this module, you can load your proxies from a file, check if they are alive and get one from the list to make a request.  
 
 Each line of the file should respect the one of following structure :  
-host:port:username:password
-host:port
-comment with # 
-<blank line>
+- host:port:username:password
+- host:port
+- comment with # 
+- <blank line>
 
 ##How to install
 ```javascript
@@ -77,12 +77,12 @@ The config can be used to personalize how the proxies has to be managed. Here is
 ```javascript
 var config = {
 		proxyFile : "./proxies.txt", // location of the file
-		hasToCheckProxies : true,  // if false, proxies are not checked
-		removeInvalidProxies : true,  // if false, invalide proxies are not removes from the list
-		checkPing : false, // if true, a ping check (hasToCheckProxies has to = true)
-		checkBannedByGoogle : true, //if true, check if the proxy is banned by Google (hasToCheckProxies has to = true)
-		pingTimeout : 5000, // Timout for the ping
-		proxyRequestTimeout : 5000, // Request timout used to test the request through the proxy
+		hasToCheckProxies : true,  // if false, the proxies are not checked
+		removeInvalidProxies : true,  // if false, invalid proxies are not remove from the list
+		checkPing : false, // if true, a ping check will be made to validate the proxy (hasToCheckProxies has to be = true)
+		checkBannedByGoogle : true, //if true, check if the proxy is banned by Google (hasToCheckProxies has to be = true)
+		pingTimeout : 5000, // timout for the ping
+		proxyRequestTimeout : 5000, // Request timout used to test a request through the proxy
 		googleAdress : "http://www.google.com", // a site to test the proxy, feel freel to use your own site
 		maxProxies : 30 // max number of proxies to analyse in //
 		
