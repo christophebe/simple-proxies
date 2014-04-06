@@ -1,0 +1,7 @@
+# -- Add the proxy list here --
+# format : [host:port:username:password] or [host:port]
+myproxydomaine.com:1234
+myproxydomaine.com:1235:usertest:passwordtest
+myproxydomaine.com:1236
+myproxydomaine.com:1237
+178.32.43.11:1238

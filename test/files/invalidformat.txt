@@ -1,0 +1,4 @@
+# -- Add the proxy list here --
+# format : [host:port:username:password] or [host:port]
+myproxydomain.com:1234
+this is an invalid line 
