@@ -1,2 +1,2 @@
--- Add the proxy list here -- 
-format : [host:port:username:password] or [host:port]
+# -- Add the proxy list here -- 
+# format : [host:port:username:password] or [host:port]

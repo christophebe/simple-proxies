@@ -126,7 +126,7 @@ var readProxyFile = function(file, callback) {
 			var proxyInfo =  lines[i].split(":");
 			
 			if (proxyInfo.length  != 4 && proxyInfo.length  != 2) {
-				             
+				log.debug("Incorrect line : " + lines[i] + "in file : " + file);             
 				//If one line in the proxy file is not well formated => enjoying an error
 				callback(new Error("Incorrect structure in the proxy file : " + file));
 				return; 
