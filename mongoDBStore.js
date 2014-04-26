@@ -37,6 +37,12 @@ MongoDBProxyStore.prototype.connect = function(callback) {
   });
 }
 
+MongoDBProxyStore.prototype.close = function () {
+
+  this.db.close();
+
+}
+
 
 MongoDBProxyStore.prototype.insert= function(proxies) {
   var collection = this.db.collection(this.dbconfig.collection);
