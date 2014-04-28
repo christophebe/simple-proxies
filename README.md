@@ -62,7 +62,7 @@ $ npm install
 
 
 ```javascript
-var proxyLoader = require("./lib/proxyfileloader");
+var proxyLoader = require("simple-proxies/lib/proxyfileloader");
 var request = require("request");
 
 // Change the config if you want to use a specific txt file
@@ -90,7 +90,7 @@ proxyLoader.loadProxyFile(config, function(error, proxyList) {
 ## API
 ### Load the default proxy file
 ```javascript
-var proxyLoader = require("./lib/proxyfileloader");
+var proxyLoader = require("simple-proxies/lib/proxyfileloader");
 proxyLoader.loadDefaultProxies(function(error, proxyList){ ... });
  ```
 
@@ -154,3 +154,21 @@ return an array of proxies : {host, port, valid, userName, password}
 This method loops on the proxy list on each call.
 
 See the model.js to get a complete overview of the API provided by this model.
+
+
+### Check the proxies
+
+Anywhere in your code or in a cron, you can check if the proxies are still valid by using the proxy checker.
+This component uses a ProxyList to make the check.
+
+```javascript
+var checker = require("simple-proxies/lib/proxychecker");
+
+var config = checker.config().setGoogleAdress("http://www.google.be");
+checker.checkAllProxies(proxyList, config, function(error) {
+    //the proxies in proxyList should be updated (valid or not valid)
+
+});
+
+ ```
+The config can be used to personalize how the proxies has to be checked. See CheckConfig in model.js to get all options.
