@@ -6,7 +6,7 @@
  *
  */
 
-var proxyLoader = require("./proxyfileloader");
+var proxyLoader = require("./lib/proxyfileloader");
 
 if ( process.argv.length == 3 ) {
 	//process.stdout.write('Usage: node load-file.js [file.txt]\n');

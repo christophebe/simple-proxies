@@ -5,10 +5,10 @@
  */
 
 var assert = require("assert");
-var fileLoader = require("../proxyfileloader");
-var dbLoader = require("../proxydbloader");
+var fileLoader = require("../lib/proxyfileloader");
+var dbLoader = require("../lib/proxydbloader");
 var dbConfig = require("./dbconfig.json");
-var dbStore = require("../mongoDBStore");
+var dbStore = require("../lib/mongoDBStore");
 
 
 describe('Test proxies', function(){
@@ -182,7 +182,7 @@ describe('Test proxies', function(){
          var config = dbLoader.config().setPm(pm);
          dbLoader.loadProxies(config, function(error, proxies) {
             assert.equal(10, proxies.getNumberOfProxies());
-            pm.close(); 
+            pm.close();
             done();
 
           });

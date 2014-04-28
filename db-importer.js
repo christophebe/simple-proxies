@@ -6,8 +6,8 @@
  */
 
 
-var fileLoader = require("./proxyfileloader");
-var dbStore = require("./mongoDBStore");
+var fileLoader = require("./lib/proxyfileloader");
+var dbStore = require("./lib/mongoDBStore");
 
 
 if ( process.argv.length != 3 ) {
@@ -40,12 +40,12 @@ config.pm.connect(function(error){
         console.log("Error during loading the proxies : " + error);
       }
       else {
-        console.log("***** List of valid proxies, also available in the DB ***** ");
+        console.log("***** List of proxies that have been imported in the DB ***** ");
         proxyList.getProxies().forEach(function(proxy){
           // Very simple log on the console to check the result
           console.log(proxy.toString());
         });
-        pm.close(); 
+        pm.close();
       }
 
     });
