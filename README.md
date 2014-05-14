@@ -2,7 +2,7 @@
 
 ## Need a proxy list management in your js code ?
 
-This package provides a simple API for using HTTP proxies in JS code.
+This package provides a simple API for using HTTP proxies in NodeJS application.
 For example, when you make many HTTP requests (specially in the SEO world ;-)), you need to make them through a group of proxies.
 The goal of this package is to simplify your code for managing a list of proxies.  
 
@@ -32,7 +32,7 @@ There also 2 command line scripts in this package :
 
 * For valid-proxies, use the following command line :
 ```
-node valide-proxies.js [/path/file.txt]
+node valid-proxies.js [/path/file.txt]
 ```
 
 * For the db-importer :
@@ -66,7 +66,7 @@ var proxyLoader = require("simple-proxies/lib/proxyfileloader");
 var request = require("request");
 
 // Change the config if you want to use a specific txt file
-// Not necessary if you plan to use proxies.txt on the root folder
+// This is not necessary if you plan to use proxies.txt on the root folder
 var config = proxyLoader.config().setProxyFile("yourfile.txt");
 
 proxyLoader.loadProxyFile(config, function(error, proxyList) {
@@ -113,6 +113,7 @@ The config can be used to personalize how the proxies has to be managed. See Fil
 
 ```javascript
 var dbLoader = require("simple-proxies/lib/proxydbloader");
+var dbStore = require("./lib/mongoDBStore");
 var pm = new dbStore.MongoDBProxyStore({"url" : "mongodb://127.0.0.1:27017/seo", "collection" : "proxies"});
 
 var config = dbLoader.config().setPm(pm);
@@ -127,7 +128,7 @@ dbLoader.loadProxies(config, function(error, proxyList) {
 The config can be used to personalize how the proxies has to be managed. See PmConfig in model.js to get all options.
 ### The object model
 
-After loading the proxies from a file or from a db, you receive a ProxyList object which contains an array of Proxy objects.
+After loading the proxies from a file or from a db, you receive a **ProxyList** object which contains an array of Proxy objects.
 
 
 #### Get all Proxies
