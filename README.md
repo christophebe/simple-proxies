@@ -21,10 +21,10 @@ Each line of the file should respect the one of following structure :
 
 ##Node Scripts
 
-There also 2 command line scripts in this package :
+There also 3 command line scripts in this package :
 - valid-proxies : check a list of proxies from a txt file.
 - db-importer : read a txt file containing proxies & import proxies into a db.
-
+- db-refresh : check if the proxies stores in a DB are still valid or not.
 ###How to use thoses scripts ?
 
 - Install Node
@@ -41,6 +41,12 @@ MongoDB is used by default but you can create your own store (see mongoDBStore.j
 ```
 node db-importer.js [/path/file.txt]
 ```
+* For the db-refresh :
+Actually, the DB config are in the script. You can change this config just by editing this script (so fast, so good ;-) ). Later, we can change this point in function of how the script will be used. 
+```
+node db-refresh.js
+```
+
 
 
 ##How to install this package into your node.js app ?
