@@ -182,6 +182,7 @@ describe('Test proxies', function(){
          var config = dbLoader.config().setPm(pm);
          dbLoader.loadProxies(config, function(error, proxies) {
             assert.equal(10, proxies.getNumberOfProxies());
+            pm.deleteAll(); 
             pm.close();
             done();
 

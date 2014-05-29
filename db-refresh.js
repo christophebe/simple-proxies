@@ -28,11 +28,19 @@ config.pm.connect(function(error){
          console.log(error);
        }
        else {
-         console.log("***** Proxies available in the DB ***** ");
-         proxyList.getProxies().forEach(function(proxy){
-           // Very simple log on the console in order to copy and past the result
-           console.log(proxy.toString());
-         });
+         if (proxyList.getProxies().length==0)
+         {
+           console.log("No proxy found in the DB");
+
+         }
+         else {
+            console.log("***** Proxies available in the DB ***** ");
+            proxyList.getProxies().forEach(function(proxy){
+              // Very simple log on the console in order to copy and past the result
+              console.log(proxy.toString());
+            });
+         }
+
        }
        pm.close();
 
