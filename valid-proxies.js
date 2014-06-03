@@ -7,6 +7,8 @@
  */
 
 var proxyLoader = require("./lib/proxyfileloader");
+var log = require('./logging').Logger;
+
 
 if ( process.argv.length == 3 ) {
 	//process.stdout.write('Usage: node load-file.js [file.txt]\n');
@@ -14,7 +16,7 @@ if ( process.argv.length == 3 ) {
   var config = proxyLoader.config().setProxyFile(file);
 	proxyLoader.loadProxyFile(config, function(error, proxyList) {
 		if (error) {
-			console.log(error);
+			log.error(error);
 		}
 		else {
 			console.log("***** List of valid proxies ***** ");

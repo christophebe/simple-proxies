@@ -8,10 +8,10 @@
 
 var fileLoader = require("./lib/proxyfileloader");
 var dbStore = require("./lib/mongoDBStore");
-
+var log = require('./lib/logging').Logger;
 
 if ( process.argv.length != 3 ) {
-   console.log('Usage: node db-importer.js [file.txt]\n');
+   log.error('Usage: node db-importer.js [file.txt]\n');
    return;
 }
 
@@ -31,13 +31,13 @@ var config = fileLoader.config()
 
 config.pm.connect(function(error){
     if (error) {
-      console.log("Error : impossible to connect to the DB : " + error);
+      log.error("Error : impossible to connect to the DB : " + error);
       return;
     }
 
     fileLoader.loadProxyFile(config, function(error, proxyList) {
       if (error) {
-        console.log("Error during loading the proxies : " + error);
+        log.error("Error during loading the proxies : " + error);
       }
       else {
         console.log("***** List of proxies that have been imported in the DB ***** ");
