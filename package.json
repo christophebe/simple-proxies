@@ -1,6 +1,6 @@
 {
   "name": "simple-proxies",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
   "description": "a simple management tool for proxies that provides an API to load a proxy list and manage them into your js code (get all proxies, check if they are alive, get an available proxy, ...).",
   "repository": {
