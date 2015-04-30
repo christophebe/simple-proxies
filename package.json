@@ -1,19 +1,23 @@
 {
   "name": "simple-proxies",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
-  "description": "a simple management tool for proxies that provides an API to load a proxy list and manage them into your js code (get all proxies, check if they are alive, get an available proxy, ...).",
+  "description": "A command line tool for managing proxies & a nodejs component to used them in your own application",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophebe/simple-proxies.git"
   },
+  "bin": {
+    "px": "./bin/px.js"
+  },
   "dependencies": {
+    "async": "*",
+    "inquirer": "^0.8.2",
+    "mongodb": "*",
     "net-ping": "*",
     "request": "*",
-    "async": "*",
     "underscore": "*",
-    "winston": "*",
-    "mongodb": "*"
+    "winston": "*"
   },
   "devDependencies": {
     "mocha": "*",
@@ -25,8 +29,5 @@
     "http",
     "proxy http"
   ],
-  "license": "MIT",
-  "engines": {
-    "node": ">=0.6"
-  }
+  "license": "MIT"
 }

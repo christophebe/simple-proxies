@@ -14,7 +14,7 @@ var dbStore = require("../lib/mongoDBStore");
 describe('Test proxies', function(){
 
 
-  describe('#DefaultFileisEmpty', function(){
+  describe('#Default File isEmpty', function(){
     it('should return an empty list of proxies for the default file', function(done){
 
      	fileLoader.loadDefaultProxies(function(error, proxies) {
@@ -29,7 +29,7 @@ describe('Test proxies', function(){
   });
 
 
-  describe('#isInvalidFormat', function(){
+  describe('Invalid Format', function(){
 
     it('should return an empty list of proxies for the file & an invalid status : invalidformat.txt', function(done){
     	config = fileLoader.config().setProxyFile("./test/files/invalidformat.txt");
@@ -41,7 +41,7 @@ describe('Test proxies', function(){
   });
 
 
-  describe('#FileNotExist', function(){
+  describe('File Not Exist', function(){
 
 		  it('File should not exist : xxxxx.txt', function(done){
 			    config = fileLoader.config().setProxyFile("./test/files/invalidformat.txt");
@@ -53,7 +53,7 @@ describe('Test proxies', function(){
   });
 
 
-  describe('#isCorrectFormat', function(){
+  describe('Correct Format', function(){
 
 	  	var loadedProxies = null;
 
@@ -95,7 +95,7 @@ describe('Test proxies', function(){
 
 
 
-  describe('#DontPassCheckAndKeepInvalid', function(){
+  describe('Dont Pass Check And Keep Invalid', function(){
 
 	  var loadedProxies = null;
 
@@ -124,7 +124,7 @@ describe('Test proxies', function(){
   });
 
 
-  describe('#DontPassCheckAndRemoveInvalid', function(){
+  describe('Dont Pass Check And Remove Invalid', function(){
 
 	  it('should return an empty list of proxies', function(done){
 
@@ -140,7 +140,7 @@ describe('Test proxies', function(){
 
   });
 
-  describe('#PersistProxiesInDB', function(){
+  describe.skip('Persist Proxies In DB', function(){
 
       var pm = new dbStore.MongoDBProxyStore(dbConfig);
 
@@ -182,7 +182,7 @@ describe('Test proxies', function(){
          var config = dbLoader.config().setPm(pm);
          dbLoader.loadProxies(config, function(error, proxies) {
             assert.equal(10, proxies.getNumberOfProxies());
-            pm.deleteAll(); 
+            pm.deleteAll();
             pm.close();
             done();
 
