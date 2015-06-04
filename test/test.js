@@ -120,7 +120,6 @@ describe('Test proxies', function(){
 	  });
 
 
-	  // Add more test - make a difference between a ping and a request error ?
   });
 
 
@@ -189,7 +188,6 @@ describe('Test proxies', function(){
           });
       });
 
-    // Add more test - make a difference between a ping and a request error ?
   });
 
 });
