@@ -17,7 +17,7 @@
     "nodiak": "^0.4.4",
     "request": "*",
     "underscore": "*",
-    "winston": "*"
+    "bunyan": "*"
   },
   "devDependencies": {
     "mocha": "*",
