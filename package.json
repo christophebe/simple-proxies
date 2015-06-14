@@ -1,6 +1,6 @@
 {
   "name": "simple-proxies",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
   "description": "A command line tool for managing proxies & a nodejs component to used them in your own application",
   "repository": {
