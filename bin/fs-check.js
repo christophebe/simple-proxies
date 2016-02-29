@@ -20,7 +20,7 @@ FsChecker.prototype.check = function() {
 			log.error(error);
 		}
 		else {
-			if (proxyList.getProxies().length == 0){
+			if (proxyList.getProxies().length === 0){
 					console.log("No valid proxy found");
 			}
 			else {
@@ -33,6 +33,6 @@ FsChecker.prototype.check = function() {
 
 	});
 
-}
+};
 
 module.exports.FsChecker = FsChecker;

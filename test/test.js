@@ -32,7 +32,7 @@ describe('Test proxies', function(){
   describe('Invalid Format', function(){
 
     it('should return an empty list of proxies for the file & an invalid status : invalidformat.txt', function(done){
-    	config = fileLoader.config().setProxyFile("./test/files/invalidformat.txt");
+    	var config = fileLoader.config().setProxyFile("./test/files/invalidformat.txt");
     	fileLoader.loadProxyFile(config, function(error, proxies) {
       		assert(error);
       		done();
@@ -44,7 +44,7 @@ describe('Test proxies', function(){
   describe('File Not Exist', function(){
 
 		  it('File should not exist : xxxxx.txt', function(done){
-			    config = fileLoader.config().setProxyFile("./test/files/invalidformat.txt");
+			    var config = fileLoader.config().setProxyFile("./test/files/invalidformat.txt");
 		    	fileLoader.loadProxyFile(config, function(error, proxies) {
 		    		assert(error);
 		      		done();
@@ -58,7 +58,7 @@ describe('Test proxies', function(){
 	  	var loadedProxies = null;
 
 	  	before(function(done){
-	  		config = fileLoader.config().
+	  		var config = fileLoader.config().
                   setProxyFile("./test/files/goodformat.txt").
                   setRemoveInvalidProxies(false);
 
@@ -100,7 +100,7 @@ describe('Test proxies', function(){
 	  var loadedProxies = null;
 
 	  before(function(done){
-		    config = fileLoader.config().
+		    var config = fileLoader.config().
                     setProxyFile("./test/files/goodformat.txt").
 	  		            setRemoveInvalidProxies(false);
 
@@ -127,7 +127,7 @@ describe('Test proxies', function(){
 
 	  it('should return an empty list of proxies', function(done){
 
-		  config = fileLoader.config().setProxyFile("./test/files/goodformat.txt");
+		  var config = fileLoader.config().setProxyFile("./test/files/goodformat.txt");
 		  fileLoader.loadProxyFile(config, function(error, result){
 	     		//console.log("Test result : " + proxies.getProxies());
 	     	 	assert.equal(0, result.getNumberOfProxies());

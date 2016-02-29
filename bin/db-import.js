@@ -44,6 +44,6 @@ DbImport.prototype.import = function() {
         });
     });
 
-}
+};
 
 module.exports.DbImport = DbImport;

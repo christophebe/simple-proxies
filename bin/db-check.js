@@ -36,17 +36,17 @@ DbChecker.prototype.check = function() {
                  callback(error);
                }
                else {
-                 if (proxyList.getProxies().length==0)
+                 if (proxyList.getProxies().length===0)
                  {
                    log.info("No proxy found in the DB");
 
                  }
                  else {
                     log.info("***** Proxies available in the DB ***** ");
-                    for (i=0;i<proxyList.getNumberOfProxies(); i++) {
+                    for (var i=0;i<proxyList.getNumberOfProxies(); i++) {
                       // Very simple log on the console in order to copy and past the result
                       log.info(proxyList.proxies[i].toString());
-                    };
+                    }
 
                  }
                  callback();
@@ -61,6 +61,6 @@ DbChecker.prototype.check = function() {
 
     );
 
-}
+};
 
 module.exports.DbChecker = DbChecker;

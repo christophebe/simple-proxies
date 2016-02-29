@@ -14,7 +14,7 @@ var mongoStore = require("../lib/mongoDBStore");
  * - Check proxies that are in a db
  *
  */
-if ( process.argv.length != 3 ) {
+if ( process.argv.length !== 3 ) {
    console.log('Usage: px [fcheck|dimport|dcheck]\n');
    return;
 }
@@ -53,7 +53,7 @@ function dbImport() {
 
   inquirer.prompt(getImportDBQuestions(), function( answers ) {
 
-        if (answers.dbtype == "mongodb") {
+        if (answers.dbtype === "mongodb") {
           var pm = new mongoStore.MongoDBProxyStore({"url" : answers.dbServer + "/" + answers.dbName, "collection" : answers.collectionName});
           var importer = new dbImporter.DbImport(answers.file, pm);
           importer.import();
@@ -71,7 +71,7 @@ function dbCheck() {
 
   inquirer.prompt(getCheckDBQuestions(), function( answers ) {
 
-        if (answers.dbtype == "mongodb") {
+        if (answers.dbtype === "mongodb") {
           var pm = new mongoStore.MongoDBProxyStore({"url" : answers.dbServer + "/" + answers.dbName, "collection" : answers.collectionName});
           var checker = new dbChecker.DbChecker(pm);
           checker.check();
@@ -89,16 +89,16 @@ function getImportDBQuestions() {
           {"type": "list", "name" : "dbtype", "message" : "DB Type", "choices" : ["mongodb", "riak"]},
           {
            "type": "input", "name" : "dbServer", "message" : "db server", "default" : "mongodb://127.0.0.1:27017",
-           "when" : function(answer){ return answer.dbtype=="mongodb"}
+           "when" : function(answer){ return answer.dbtype==="mongodb";}
           },
           {
            "type": "input", "name" : "dbName", "message" : "db name", "default" : "seo",
-           "when" : function(answer){ return answer.dbtype=="mongodb"}
+           "when" : function(answer){ return answer.dbtype==="mongodb";}
           },
           {
            "type": "input", "name" : "collectionName", "message" : "collection name", "default" : "proxies",
-           "when" : function(answer){ return answer.dbtype=="mongodb"}
-          }]
+           "when" : function(answer){ return answer.dbtype==="mongodb";}
+         }];
 }
 
 
@@ -107,14 +107,14 @@ function getCheckDBQuestions() {
   return [{"type": "list", "name" : "dbtype", "message" : "DB Type", "choices" : ["mongodb", "riak"]},
           {
            "type": "input", "name" : "dbServer", "message" : "db server", "default" : "mongodb://127.0.0.1:27017",
-           "when" : function(answer){ return answer.dbtype=="mongodb"}
+           "when" : function(answer){ return answer.dbtype==="mongodb";}
           },
           {
            "type": "input", "name" : "dbName", "message" : "db name", "default" : "seo",
-           "when" : function(answer){ return answer.dbtype=="mongodb"}
+           "when" : function(answer){ return answer.dbtype==="mongodb";}
           },
           {
            "type": "input", "name" : "collectionName", "message" : "collection name", "default" : "proxies",
-           "when" : function(answer){ return answer.dbtype=="mongodb"}
-          }]
+           "when" : function(answer){ return answer.dbtype==="mongodb";}
+         }];
 }
