@@ -12,12 +12,13 @@
   },
   "dependencies": {
     "async": "*",
-    "inquirer": "^0.8.2",
+    "bunyan": "*",
+    "inquirer": "*",
     "mongodb": "*",
-    "nodiak": "^0.4.4",
+    "nodiak": "*",
     "request": "*",
-    "underscore": "*",
-    "bunyan": "*"
+    "shuffle-array": "*",
+    "underscore": "*"
   },
   "devDependencies": {
     "mocha": "*",

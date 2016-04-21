@@ -88,7 +88,14 @@ describe('Test proxies', function(){
 	      assert.equal(proxy.userName, "usertest");
 	      assert.equal(proxy.password, "passwordtest");
 	      assert.equal(proxy.getUrl(), "http://usertest:passwordtest@myproxydomaine.com:1235");
-	    });
+	  });
+
+    it('Get random', function(){
+
+        var proxy = loadedProxies.pick();
+        assert(proxy);
+      
+    });
 
 
   });

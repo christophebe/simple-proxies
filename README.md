@@ -160,6 +160,19 @@ return an array of proxies : {host, port, valid, userName, password}
 
 This method loops on the proxy list on each call.
 
+**Get one proxy randomly**
+```javascript
+	var proxy = proxyList.pick();
+
+	console.log(proxy.getUrl()); //return the complete URL of the proxy : http://username:pwd@host:port
+	console.log(proxy.userName);
+	console.log(proxy.password);
+	console.log(proxy.host);
+	console.log(proxy.port);
+	console.log(proxy.valid);
+
+ ```
+
 See the model.js to get a complete overview of the API provided by this model.
 
 
