@@ -1,0 +1,108 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/christophe/.nvm/versions/node/v5.5.0/bin/node',
+1 verbose cli   '/Users/christophe/.nvm/versions/node/v5.5.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.3.12
+3 info using node@v5.5.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/christophe/nodejs/_MODULES/simple-proxies',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/christophe/.npm/simple-proxies/0.1.11/package.tgz not in flight; packing
+9 info lifecycle simple-proxies@0.1.11~prepublish: simple-proxies@0.1.11
+10 silly lifecycle simple-proxies@0.1.11~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/christophe/.npm/simple-proxies/0.1.11/package.tgz',
+11 verbose tar pack   '/Users/christophe/nodejs/_MODULES/simple-proxies' ]
+12 verbose tarball /Users/christophe/.npm/simple-proxies/0.1.11/package.tgz
+13 verbose folder /Users/christophe/nodejs/_MODULES/simple-proxies
+14 verbose addLocalTarball adding from inside cache /Users/christophe/.npm/simple-proxies/0.1.11/package.tgz
+15 silly cache afterAdd simple-proxies@0.1.11
+16 verbose afterAdd /Users/christophe/.npm/simple-proxies/0.1.11/package/package.json not in flight; writing
+17 verbose afterAdd /Users/christophe/.npm/simple-proxies/0.1.11/package/package.json written
+18 silly publish { name: 'simple-proxies',
+18 silly publish   version: '0.1.11',
+18 silly publish   author:
+18 silly publish    { name: 'Christophe Lombart',
+18 silly publish      email: 'christophe.lombart@gmail.com' },
+18 silly publish   description: 'A command line tool for managing proxies & a nodejs component to used them in your own application',
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/christophebe/simple-proxies.git' },
+18 silly publish   bin: { px: './bin/px.js' },
+18 silly publish   dependencies:
+18 silly publish    { async: '*',
+18 silly publish      bunyan: '*',
+18 silly publish      inquirer: '*',
+18 silly publish      mongodb: '*',
+18 silly publish      nodiak: '*',
+18 silly publish      request: '*',
+18 silly publish      'shuffle-array': '*',
+18 silly publish      underscore: '*' },
+18 silly publish   devDependencies: { mocha: '*', expect: '*' },
+18 silly publish   keywords: [ 'proxies', 'proxy management', 'http', 'proxy http' ],
+18 silly publish   license: 'MIT',
+18 silly publish   readme: 'This project aims to solve 2 problems\r\n- **A command line tool for managing proxies** from a file or a db. Currently, basic commands are provided to check & import proxies. We plan to add more commands.\r\n- A **nodejs component** for using proxies in your apps.\r\n\r\nBasic ! but do the job !\r\n\r\n\r\n## Install\r\n\r\nIn order to use the command line :\r\n```\r\nnpm install simple-proxies -g\r\n```\r\n\r\nIn order to use the component inside your nodejs app :\r\n```\r\nnpm install simple-proxies --save\r\n```\r\n\r\n##Structure of the txt proxy file\r\n\r\nEach line of the file should respect the one of following structure :  \r\n- host:port:username:password\r\n- host:port\r\n- comment with #\r\n- blank line\r\n\r\n\r\n## Command Line Tools\r\n\r\n### Check proxies that are in a text file\r\nIf you want to check if the proxies are valid, run the following command :\r\n```\r\npx fcheck\r\n```\r\nThis command will ask you the location of the file to check (default : ./proxies.txt)\r\n\r\n### Import proxies in a db from a file\r\n```\r\npx dimport\r\n```\r\nCurrently, we are supporting MongoDB & Riak.\r\nThis command will ask your the DB connexion infos & the file to used.\r\n\r\n### Check proxies that are in a db\r\n```\r\npx dcheck\r\n```\r\nThis command will ask your the DB connexion infos\r\n\r\n\r\n\r\n## Using proxies in your own app\r\n\r\nThis package provides a simple API for using HTTP proxies in a NodeJS application. For example, when you make many HTTP requests (specially in the SEO world ;-)), you need to make them through a group of proxies.\r\nThe goal of this package is to simplify your code for managing a list of proxies.  \r\n\r\nThere are 3 components :\r\n* ProxyFileLoader : load proxies from a txt file & store them into JS objects. This component can also import the different proxies into a DB.\r\n* ProxyDBLoader : load proxies from a DB & store them into JS Objects.\r\n* ProxyChecker : check if proxies are valid & not banned by Google.\r\n\r\n\r\n\r\n### An example with Request\r\n\r\n\r\n```javascript\r\nvar proxyLoader = require("simple-proxies/lib/proxyfileloader");\r\nvar request = require("request");\r\n\r\n// Change the config if you want to use a specific txt file\r\n// This is not necessary if you plan to use proxies.txt on the current folder\r\nvar config = proxyLoader.config().setProxyFile("yourfile.txt");\r\n\r\nproxyLoader.loadProxyFile(config, function(error, proxyList) {\r\n  if (error) {\r\n    console.log(error);\r\n  }\r\n  else {\r\n     // Make a request with one proxy\r\n     request.get({\r\n         uri:\'http://www.google.com\',\r\n         proxy : proxyList.getProxy().getUrl()\r\n     });\r\n  }\r\n\r\n});\r\n\r\n\r\n ```\r\n\r\n\r\n### API\r\n#### Load the default proxy file\r\n```javascript\r\nvar proxyLoader = require("simple-proxies/lib/proxyfileloader");\r\nproxyLoader.loadDefaultProxies(function(error, proxyList){  \r\n    var proxies = proxyList.getProxies();\r\n});\r\n ```\r\n\r\nBy default, the list of proxies are in a file called proxies.txt and it should be in the root folder of your project.\r\n\r\n\r\n#### Read proxies from a specific txt file\r\n```javascript\r\nvar proxyLoader = require("simple-proxies/lib/proxyfileloader");\r\nvar config = proxies.config().setProxyFile("filename.txt").setCheckProxies(false);\r\n\r\nproxyLoader.loadProxyFile(config, function(error, proxyList) {\r\n\r\n});\r\n ```\r\n\r\nThe config can be used to personalize how the proxies has to be managed. See FileConfig in model.js to get all options.\r\n\r\n#### Read proxies from the database\r\n\r\n```javascript\r\nvar dbLoader = require("simple-proxies/lib/proxydbloader");\r\nvar dbStore = require("./lib/mongoDBStore");\r\nvar pm = new dbStore.MongoDBProxyStore({"url" : "mongodb://127.0.0.1:27017/seo", "collection" : "proxies"});\r\n\r\nvar config = dbLoader.config().setPm(pm);\r\ndbLoader.loadProxies(config, function(error, proxyList) {\r\n     console.log(proxies.getNumberOfProxies());\r\n     pm.close();\r\n\r\n});\r\n\r\n ```\r\n\r\nThe config can be used to personalize how the proxies has to be managed. See PmConfig in model.js to get all options.\r\n#### The object model\r\n\r\nAfter loading the proxies from a file or from a db, you receive a **ProxyList** object which contains an array of Proxy objects.\r\n\r\n\r\n**Get all Proxies**\r\n```javascript\r\nvar proxies = proxyList.getProxies();\r\nproxies.forEach(function(proxy) { ... });\r\n ```\r\nreturn an array of proxies : {host, port, valid, userName, password}\r\n\r\n\r\n**Get one proxy**\r\n```javascript\r\n\tvar proxy = proxyList.getProxy();\r\n\r\n\tconsole.log(proxy.getUrl()); //return the complete URL of the proxy : http://username:pwd@host:port\r\n\tconsole.log(proxy.userName);\r\n\tconsole.log(proxy.password);\r\n\tconsole.log(proxy.host);\r\n\tconsole.log(proxy.port);\r\n\tconsole.log(proxy.valid);\r\n\r\n ```\r\n\r\nThis method loops on the proxy list on each call.\r\n\r\n**Get one proxy randomly**\r\n```javascript\r\n\tvar proxy = proxyList.pick();\r\n\r\n\tconsole.log(proxy.getUrl()); //return the complete URL of the proxy : http://username:pwd@host:port\r\n\tconsole.log(proxy.userName);\r\n\tconsole.log(proxy.password);\r\n\tconsole.log(proxy.host);\r\n\tconsole.log(proxy.port);\r\n\tconsole.log(proxy.valid);\r\n\r\n ```\r\n\r\nSee the model.js to get a complete overview of the API provided by this model.\r\n\r\n\r\n#### Check the proxies\r\n\r\nAnywhere in your code or in a cron, you can check if the proxies are still valid by using the proxy checker.\r\nThis component uses a ProxyList to make the check.\r\n\r\n```javascript\r\nvar checker = require("simple-proxies/lib/proxychecker");\r\n\r\nvar config = checker.config().setGoogleAdress("http://www.google.be");\r\nchecker.checkAllProxies(proxyList, config, function(error) {\r\n    //the proxies in proxyList should be updated (valid or not valid)\r\n\r\n});\r\n\r\n ```\r\nThe config can be used to personalize how the proxies has to be checked. See CheckConfig in model.js to get all options.\r\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: 'eb5dcac6fd8d65a7eceb8299ec404730d30c39d3',
+18 silly publish   bugs: { url: 'https://github.com/christophebe/simple-proxies/issues' },
+18 silly publish   homepage: 'https://github.com/christophebe/simple-proxies#readme',
+18 silly publish   _id: 'simple-proxies@0.1.11',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: '9ae09c86fe2203fa7961e0e1ca30411da8d3dba3',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name simple-proxies
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/simple-proxies
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/christophe/.npm/simple-proxies/0.1.11/package.tgz
+26 verbose request uri https://registry.npmjs.org/simple-proxies
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 21:29:49
+29 verbose request id 1ca500699959738b
+30 http request PUT https://registry.npmjs.org/simple-proxies
+31 http 403 https://registry.npmjs.org/simple-proxies
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '96',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Thu, 21 Apr 2016 19:29:50 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-ams4142-AMS',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1461266989.265509,VS0,VE1555',
+32 verbose headers   vary: 'Accept-Encoding' }
+33 verbose request invalidating /Users/christophe/.npm/registry.npmjs.org/simple-proxies on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 0.1.11." : simple-proxies
+35 verbose stack     at makeError (/Users/christophe/.nvm/versions/node/v5.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/Users/christophe/.nvm/versions/node/v5.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/Users/christophe/.nvm/versions/node/v5.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/Users/christophe/.nvm/versions/node/v5.5.0/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:100:13)
+35 verbose stack     at Request.emit (events.js:185:7)
+35 verbose stack     at Request.<anonymous> (/Users/christophe/.nvm/versions/node/v5.5.0/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+35 verbose stack     at emitOne (events.js:95:20)
+35 verbose stack     at Request.emit (events.js:182:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/Users/christophe/.nvm/versions/node/v5.5.0/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid simple-proxies
+38 verbose cwd /Users/christophe/nodejs/_MODULES/simple-proxies
+39 error Darwin 15.3.0
+40 error argv "/Users/christophe/.nvm/versions/node/v5.5.0/bin/node" "/Users/christophe/.nvm/versions/node/v5.5.0/bin/npm" "publish"
+41 error node v5.5.0
+42 error npm  v3.3.12
+43 error code E403
+44 error "You cannot publish over the previously published version 0.1.11." : simple-proxies
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
