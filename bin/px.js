@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 var inquirer   = require("inquirer");
 var fsChecker  = require("./fs-check.js");
-var dbChecker  = require("./db-check.js");
-var dbImporter = require("./db-import.js");
+
 
 var mongoStore = require("../lib/mongoDBStore");
 
@@ -15,7 +14,7 @@ var mongoStore = require("../lib/mongoDBStore");
  *
  */
 if ( process.argv.length !== 3 ) {
-   console.log('Usage: px [fcheck|dimport|dcheck]\n');
+   console.log('Usage: px [fcheck]\n');
    return;
 }
 
@@ -23,14 +22,6 @@ switch (process.argv[2]) {
 
       case "fcheck":
           fsCheck();
-          break;
-
-      case "dimport" :
-          dbImport();
-          break;
-
-      case "dcheck":
-          dbCheck();
           break;
 
       default:

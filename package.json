@@ -1,6 +1,6 @@
 {
   "name": "simple-proxies",
-  "version": "0.1.12",
+  "version": "1.0.0",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
   "description": "A command line tool for managing proxies & a nodejs component to used them in your own application",
   "repository": {
@@ -11,18 +11,22 @@
     "px": "./bin/px.js"
   },
   "dependencies": {
-    "async": "*",
+    "async-parallel": "^1.2.3",
     "bunyan": "*",
     "inquirer": "*",
     "mongodb": "*",
     "nodiak": "*",
     "request": "*",
-    "shuffle-array": "*",
-    "underscore": "*"
+    "request-promise-native": "*",
+    "shuffle-array": "*"
   },
   "devDependencies": {
     "mocha": "*",
-    "expect": "*"
+    "expect": "*",
+    "eslint": "^5.14.1",
+    "eslint-config-adidas-es8": "^1.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-promise": "^4.0.1"
   },
   "keywords": [
     "proxies",
