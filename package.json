@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/christophebe/simple-proxies.git"
   },
+  "scripts": {
+    "test": "mocha 'test/**/*.js' --timeout 10000"
+  },
   "bin": {
     "px": "./bin/px.js"
   },
