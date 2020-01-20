@@ -1,8 +1,8 @@
 {
   "name": "simple-proxies",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
-  "description": "A command line tool for managing proxies & a nodejs component to used them in your own application",
+  "description": "A small nodejs module to use proxies in application",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophebe/simple-proxies.git"
@@ -10,26 +10,16 @@
   "scripts": {
     "test": "mocha 'test/**/*.js' --timeout 10000"
   },
-  "bin": {
-    "px": "./bin/px.js"
-  },
   "dependencies": {
     "async-parallel": "^1.2.3",
-    "bunyan": "*",
-    "inquirer": "*",
-    "mongodb": "*",
-    "nodiak": "*",
+    "shuffle-array": "*",
     "request": "*",
-    "request-promise-native": "*",
-    "shuffle-array": "*"
+    "request-promise-native": "*"
   },
   "devDependencies": {
-    "eslint": "^5.14.1",
-    "eslint-config-adidas-es8": "^1.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "expect": "*",
-    "mocha": "^6.2.0"
+    "eslint": "^6.8.0",
+    "expect": "^24.9.0",
+    "mocha": "^7.0.0"
   },
   "keywords": [
     "proxies",
