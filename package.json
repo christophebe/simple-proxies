@@ -1,6 +1,6 @@
 {
   "name": "simple-proxies",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
   "description": "A small nodejs module to use proxies in application",
   "repository": {
