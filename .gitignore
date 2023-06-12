@@ -2,3 +2,4 @@ logs
 node_modules
 tags
 npm-debug.log
+.history

@@ -25,20 +25,19 @@ There are 2 components :
 - ProxyFileLoader : load proxies from a txt file & store them into a JS object.
 - ProxyChecker : check if proxies are valid & not banned by Google.
 
-### An example with Request
+### An example with Axios
 
 ```javascript
-const proxyLoader = require('simple-proxies/lib/proxyfileloader');
-const request = require('request');
+import * as proxyLoader from '../lib/proxyfileloader.js'
+import axios from 'axios'
 
 // Change the config if you want to use a specific txt file
 // This is not necessary if you plan to use proxies.txt on the current folder
-const config = proxyLoader.config().setProxyFile('yourfile.txt');
-
-const proxyList = await proxyLoader.loadProxyFile(config);
+const config = proxyLoader.config().setProxyFile('yourfile.txt')
+const proxyList = await proxyLoader.loadProxyFile(config)
 
 // Make a request with one proxy
-const response = request.get({ uri: 'http://www.xxx.com', proxy: proxyList.getProxy().getUrl() });
+const response = await axios({ uri: 'http://www.xxx.com', proxy: proxyList.getProxy().getConnectionParams() })
 ```
 
 ### API
@@ -46,7 +45,7 @@ const response = request.get({ uri: 'http://www.xxx.com', proxy: proxyList.getPr
 #### Load the default proxy file
 
 ```javascript
-const proxyLoader = require('simple-proxies/lib/proxyfileloader');
+import * as proxyLoader from 'simple-proxies/lib/proxyfileloader'
 const proxyList = await proxyLoader.loadDefaultProxies();
 const proxies = proxyList.getProxies();
 ```
@@ -56,13 +55,13 @@ By default, the list of proxies are in a file called proxies.txt and it should b
 #### Read proxies from a specific txt file
 
 ```javascript
-var proxyLoader = require('simple-proxies/lib/proxyfileloader');
+import * as proxyLoader from 'simple-proxies/lib/proxyfileloader'
 var config = proxies
   .config()
   .setProxyFile('filename.txt')
   .setCheckProxies(false);
 
-const proxyList = await proxyLoader.loadProxyFile(config);
+const proxyList = await proxyLoader.loadProxyFile(config)
 ```
 
 The config can be used to personalize how the proxies have to be managed. See FileConfig in model.js to get all options.
@@ -74,21 +73,21 @@ After loading the proxies from a file or from a db, you receive a **ProxyList** 
 **Get all Proxies**
 
 ```javascript
-var proxies = proxyList.getProxies();
-proxies.map(proxy => console.log(proxy)); // return an array of proxies : {host, port, valid, userName, password}
+var proxies = proxyList.getProxies()
+proxies.map(proxy => console.log(proxy)) // return an array of proxies : {host, port, valid, userName, password}
 ```
 
 **Get one proxy**
 
 ```javascript
-var proxy = proxyList.getProxy();
+var proxy = proxyList.getProxy()
 
-console.log(proxy.getUrl()); //return the complete URL of the proxy : http://username:pwd@host:port
-console.log(proxy.userName);
-console.log(proxy.password);
-console.log(proxy.host);
-console.log(proxy.port);
-console.log(proxy.valid);
+console.log(proxy.getUrl()) //return the complete URL of the proxy : http://username:pwd@host:port
+console.log(proxy.userName)
+console.log(proxy.password)
+console.log(proxy.host)
+console.log(proxy.port)
+console.log(proxy.valid)
 ```
 
 This method loops on the proxy list on each call.
@@ -96,14 +95,14 @@ This method loops on the proxy list on each call.
 **Get one proxy randomly**
 
 ```javascript
-var proxy = proxyList.pick();
+var proxy = proxyList.pick()
 
-console.log(proxy.getUrl()); //return the complete URL of the proxy : http://username:pwd@host:port
-console.log(proxy.userName);
-console.log(proxy.password);
-console.log(proxy.host);
-console.log(proxy.port);
-console.log(proxy.valid);
+console.log(proxy.getUrl()) //return the complete URL of the proxy : http://username:pwd@host:port
+console.log(proxy.userName)
+console.log(proxy.password)
+console.log(proxy.host)
+console.log(proxy.port)
+console.log(proxy.valid)
 ```
 
 See the model.js to get a complete overview of the API provided by this model.
@@ -114,8 +113,8 @@ Anywhere in your code or in a cron, you can check if the proxies are still valid
 This component uses a ProxyList to make the check.
 
 ```javascript
-var checker = require('simple-proxies/lib/proxychecker');
-const proxyLoader = require('simple-proxies/lib/proxyfileloader');
+import * as checher from 'simple-proxies/lib/proxychecker'
+import * as proxyLoader from 'simple-proxies/lib/proxyfileloader'
 
 const proxyList =  await proxyLoader.loadDefaultProxies();
 var config = checker.config().setGoogleAdress('http://www.google.be');

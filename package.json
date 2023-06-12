@@ -1,25 +1,33 @@
 {
   "name": "simple-proxies",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "author": "Christophe Lombart <christophe.lombart@gmail.com>",
-  "description": "A small nodejs module to use proxies in application",
+  "description": "A small nodejs module to use proxies in an application",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophebe/simple-proxies.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16"
   },
   "scripts": {
     "test": "mocha 'test/**/*.js' --timeout 10000"
   },
   "dependencies": {
-    "async-parallel": "^1.2.3",
-    "shuffle-array": "*",
-    "request": "*",
-    "request-promise-native": "*"
+    "axios": "^1.4.0",
+    "p-limit": "^4.0.0",
+    "shuffle-array": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "expect": "^24.9.0",
-    "mocha": "^7.0.0"
+    "chai": "^4.3.7",
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "expect": "^29.5.0",
+    "mocha": "^10.2.0"
   },
   "keywords": [
     "proxies",
